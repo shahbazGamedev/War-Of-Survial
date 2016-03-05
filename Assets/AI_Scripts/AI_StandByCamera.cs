@@ -3,11 +3,11 @@ using System.Collections;
 
 public class AI_StandByCamera : MonoBehaviour {
 	public Camera StandByCamera;
-	Transform CamPos;
+	////Transform CamPos;
 	float speed = 1f;
 	// Use this for initialization
 	void Start () {
-		CamPos = StandByCamera.transform; 
+		/////CamPos = StandByCamera.transform; 
 
 	}
 	

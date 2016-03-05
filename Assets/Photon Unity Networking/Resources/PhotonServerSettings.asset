@@ -22,19 +22,15 @@ MonoBehaviour:
   EnableLobbyStatistics: 0
   RpcList:
   - Chat
-  - ColorRpc
   - DestroyRpc
-  - DoJump
-  - Flash
   - InstantiateRpc
-  - Marco
   - OnAwakeRPC
   - PickupItemInit
-  - Polo
   - PunPickup
   - PunPickupSimple
   - PunRespawn
   - RequestForPickupTimes
-  - TaggedPlayer
   - SetTeamID
+  - SniperBulletFX
+  - TakeDamage
   DisableAutoOpenWizard: 1

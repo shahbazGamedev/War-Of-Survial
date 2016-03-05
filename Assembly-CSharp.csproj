@@ -46,19 +46,22 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\AI_Scripts\AI_Bullet.cs" />
-     <Compile Include="Assets\AI_Scripts\AI_MainCameraFollowTarget.cs" />
+     <Compile Include="Assets\AI_Scripts\AI_FollowCamera.cs" />
+     <Compile Include="Assets\AI_Scripts\AI_Health.cs" />
      <Compile Include="Assets\AI_Scripts\AI_MoneyManager.cs" />
-     <Compile Include="Assets\AI_Scripts\AI_NetworkCharater.cs" />
+     <Compile Include="Assets\AI_Scripts\AI_NetworkCharacter.cs" />
      <Compile Include="Assets\AI_Scripts\AI_NetworkManager.cs" />
-     <Compile Include="Assets\AI_Scripts\AI_PlayerHealth.cs" />
      <Compile Include="Assets\AI_Scripts\AI_PlayerMouseLook.cs" />
      <Compile Include="Assets\AI_Scripts\AI_PlayerMovement.cs" />
      <Compile Include="Assets\AI_Scripts\AI_PlayerShooting.cs" />
      <Compile Include="Assets\AI_Scripts\AI_StandByCamera.cs" />
-     <Compile Include="Assets\AI_Scripts\AI_SupportHealth.cs" />
      <Compile Include="Assets\AI_Scripts\AI_SupportMovement.cs" />
      <Compile Include="Assets\AI_Scripts\AI_SupportSpawn.cs" />
-     <Compile Include="Assets\AI_Scripts\AI_TeamID.cs" />
+     <Compile Include="Assets\AI_Scripts\AI_TeamMember.cs" />
+     <Compile Include="Assets\AI_Scripts\AI_WeaponData.cs" />
+     <Compile Include="Assets\AI_Scripts\obsolete\AI_FXManager.cs" />
+     <Compile Include="Assets\AI_Scripts\obsolete\AI_PlayerHealth.cs" />
+     <Compile Include="Assets\AI_Scripts\obsolete\AI_SupportHealth.cs" />
      <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\CustomTypes.cs" />
      <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Enums.cs" />
      <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Extensions.cs" />
@@ -165,11 +168,11 @@
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
- <Reference Include="websocket-sharp">
- <HintPath>/Users/MikeZhou1/Google Drive/Courses/524/project/WarOfSurvial_20160225/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
- </Reference>
  <Reference Include="Photon3Unity3D">
  <HintPath>/Users/MikeZhou1/Google Drive/Courses/524/project/WarOfSurvial_20160225/Assets/Plugins/Photon3Unity3D.dll</HintPath>
+ </Reference>
+ <Reference Include="websocket-sharp">
+ <HintPath>/Users/MikeZhou1/Google Drive/Courses/524/project/WarOfSurvial_20160225/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/Unity/Unity.app/Contents/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

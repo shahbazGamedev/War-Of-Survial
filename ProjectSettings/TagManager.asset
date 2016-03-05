@@ -6,6 +6,7 @@ TagManager:
   tags:
   - EnemyPlayer
   - spawnSpot
+  - FollowCamera
   layers:
   - Default
   - TransparentFX

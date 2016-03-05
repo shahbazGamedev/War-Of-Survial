@@ -20,6 +20,8 @@ public class AI_NetworkManager : MonoBehaviour {
 	int teamID=0;
 
 	public GameObject StandByCamera;
+	private GameObject follow_camera;
+	private GameObject player_camera;
 	
 	// Use this for initialization
 	void Start () {
@@ -109,7 +111,7 @@ public class AI_NetworkManager : MonoBehaviour {
 				GUILayout.BeginVertical();
 				GUILayout.FlexibleSpace();
 				
-				if( GUILayout.Button("Red Team") ) {Debug.Log ("4");
+				if( GUILayout.Button("Red Team") ) {
 					SpawnMyPlayer(1);
 				}
 				
@@ -152,33 +154,44 @@ public class AI_NetworkManager : MonoBehaviour {
 		Debug.Log ("OnJoinedRoom");
 		
 		connecting = false;
-		StandByCamera.SetActive (false);
+
 		//SpawnMyPlayer();
 	}
 	
-	void SpawnMyPlayer(int teamID) {Debug.Log ("SpawnMyPlayer");
-		//StandByCamera.SetActive (false);Debug.Log ("SpawnMyPlayer1");
+	void SpawnMyPlayer(int teamID) {
 		this.teamID = teamID;
 		hasPickedTeam = true;
 		////AddChatMessage("Spawning player: " + PhotonNetwork.player.name);
 
 		if(spawnSpots == null) {
-			Debug.LogError ("There is no spawnSpot!");Debug.Log ("spawnSpots == null");
+			Debug.LogError ("There is no spawnSpot!");
 			return;
 		}
-		Debug.Log ("6");
-		Transform mySpawnSpot = spawnSpots[ Random.Range (0, spawnSpots.Length) ].transform;Debug.Log ("7");
-		GameObject myPlayerGO = (GameObject)PhotonNetwork.Instantiate("Player", mySpawnSpot.position, mySpawnSpot.rotation, 0);Debug.Log ("8");
+		Transform mySpawnSpot = spawnSpots[ Random.Range (0, spawnSpots.Length) ].transform;
+		StandByCamera.SetActive (false);
+		GameObject myPlayerGO = (GameObject)PhotonNetwork.Instantiate("Player", mySpawnSpot.position, mySpawnSpot.rotation, 0);
 		if (myPlayerGO == null)
-			Debug.Log ("5");
-		//((MonoBehaviour)myPlayerGO.GetComponent("FPSInputController")).enabled = true;
-		((MonoBehaviour)myPlayerGO.GetComponent("AI_PlayerMouseLook")).enabled = true;
-		((MonoBehaviour)myPlayerGO.GetComponent("AI_PlayerMovement")).enabled = true;
+			Debug.LogError ("Can't instantiate player!");
 
-
+		//set other components
+		myPlayerGO.GetComponent<AI_PlayerMouseLook>().enabled = true;
+		myPlayerGO.GetComponent<AI_PlayerMovement>().enabled = true;
+		myPlayerGO.GetComponent<AI_PlayerShooting>().enabled = true;
 		myPlayerGO.GetComponent<PhotonView>().RPC ("SetTeamID", PhotonTargets.AllBuffered, teamID);
-		
-		myPlayerGO.transform.FindChild("PlayerCamera").gameObject.SetActive(true);
+
+		//set follow camera
+		////follow_camera = GameObject.FindGameObjectWithTag ("FollowCamera");
+		follow_camera = GameObject.FindGameObjectWithTag ("FollowCamera");
+		myPlayerGO.GetComponent<AI_PlayerMovement>().follow_camera = follow_camera.GetComponent<Camera>();
+		follow_camera.GetComponent<AI_FollowCamera>().target = myPlayerGO.transform;
+		////follow_camera.SetActive (true);
+		follow_camera.GetComponent<Camera>().enabled = true;
+
+
+		//set player camera
+		player_camera = myPlayerGO.transform.FindChild ("PlayerCamera").gameObject;
+		player_camera.SetActive (true);
+
 
 	}
 	
